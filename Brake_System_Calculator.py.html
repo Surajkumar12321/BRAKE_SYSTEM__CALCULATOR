@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>Brake_System_Calculator.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #0033b3;}
+.s3 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Brake_System_Calculator.py</font>
+</center></td></tr></table>
+<pre><span class="s0">print(</span><span class="s1">'''BRAKING_SYSTEM_CALCULATOR 
+Enter all the values in SI unit'''</span><span class="s0">)</span>
+<span class="s0">print(</span><span class="s1">&quot;enter_brake_pedal_force(in Newton)&quot;</span><span class="s0">)</span>
+<span class="s0">a=eval(input())</span>
+<span class="s0">print(</span><span class="s1">&quot;enter_brake_pedal_ratio(like 5/6)&quot;</span><span class="s0">)</span>
+<span class="s0">b=eval(input())</span>
+<span class="s0">print(</span><span class="s1">&quot;enter_TMC/MC_diameter(in meter)&quot;</span><span class="s0">)</span>
+<span class="s0">c=eval(input())</span>
+<span class="s0">print(</span><span class="s1">&quot;enter_front_caliper_diameter(in meter)&quot;</span><span class="s0">)</span>
+<span class="s0">d=eval(input())</span>
+<span class="s0">print(</span><span class="s1">&quot;enter_rear_caliper_diameter(in meter)&quot;</span><span class="s0">)</span>
+<span class="s0">i=eval(input())</span>
+<span class="s0">print(</span><span class="s1">&quot;enter_radius_of_front_rotor(in meter)&quot;</span><span class="s0">)</span>
+<span class="s0">e=eval(input())</span>
+<span class="s0">print(</span><span class="s1">&quot;enter_radius_of_rear_rotor(in meter)&quot;</span><span class="s0">)</span>
+<span class="s0">j=eval(input())</span>
+<span class="s0">print(</span><span class="s1">&quot;enter_radius_of_tyre(in meter)&quot;</span><span class="s0">)</span>
+<span class="s0">f=eval(input())</span>
+<span class="s0">print(</span><span class="s1">&quot;enter_mass_of_vehicle(in kg&quot;</span><span class="s0">)</span>
+<span class="s0">g=eval(input())</span>
+<span class="s0">print(</span><span class="s1">&quot;enter_brake_intial_speed_of_vehicle(in meter per second)&quot;</span><span class="s0">)</span>
+<span class="s0">h=eval(input())</span>
+<span class="s2">def </span><span class="s0">force_on_tmc(a11,a12):</span>
+  <span class="s0">a1=a11*a12</span>
+  <span class="s2">return</span><span class="s0">(a1)</span>
+<span class="s2">def </span><span class="s0">area(c11):</span>
+  <span class="s0">a2=</span><span class="s3">0.785</span><span class="s0">*c11*c11</span>
+  <span class="s2">return</span><span class="s0">(a2)</span>
+<span class="s2">def </span><span class="s0">braking_force(p1,a2,e11,f11):</span>
+  <span class="s0">a3=(</span><span class="s3">2</span><span class="s0">*p1*a2*</span><span class="s3">0.7</span><span class="s0">*e11)/f11</span>
+  <span class="s2">return</span><span class="s0">(a3)</span>
+<span class="s2">def </span><span class="s0">braking_force1(p12,a22,e111,f111):</span>
+  <span class="s0">t1=(p12*a22*</span><span class="s3">0.7</span><span class="s0">*e111)/f111</span>
+  <span class="s2">return</span><span class="s0">(t1)</span>
+<span class="s2">def </span><span class="s0">deceleration(t11,g11):</span>
+  <span class="s0">a4=t11/g11</span>
+  <span class="s2">return</span><span class="s0">(a4)</span>
+<span class="s2">def </span><span class="s0">stoping_distance(h11,a41):</span>
+  <span class="s0">a5=pow(h11,</span><span class="s3">2</span><span class="s0">)/(</span><span class="s3">2</span><span class="s0">*a41)</span>
+  <span class="s2">return</span><span class="s0">(a5)</span>
+<span class="s2">def </span><span class="s0">stoping_time(h11,a41):</span>
+  <span class="s0">z5=h11/a41</span>
+  <span class="s2">return</span><span class="s0">(z5)</span>
+<span class="s2">while True</span><span class="s0">:</span>
+  <span class="s0">print(</span><span class="s1">'''Select one option 
+       1 : for static calculation 
+       2 : for thermal calculation 
+       3 : exit'''</span><span class="s0">)</span>
+  <span class="s0">choice = int(input())</span>
+  <span class="s2">if </span><span class="s0">choice==</span><span class="s3">1</span><span class="s0">:</span>
+        <span class="s0">print(</span><span class="s1">'''which type of braking configuration you are using 
+        select one option 
+        1: for X split 
+        2: for H split 
+        3: for Y split'''</span><span class="s0">)</span>
+        <span class="s0">choice1=int(input())</span>
+        <span class="s2">if </span><span class="s0">choice1==</span><span class="s3">1 </span><span class="s2">or </span><span class="s3">2</span><span class="s0">:</span>
+           <span class="s0">print(</span><span class="s1">&quot;force on TMC/MC&quot;</span><span class="s0">,force_on_tmc(a,b),</span><span class="s1">&quot;N&quot;</span><span class="s0">)</span>
+           <span class="s0">print(</span><span class="s1">&quot;area of tmc&quot;</span><span class="s0">,area(c),</span><span class="s1">&quot;meter square&quot;</span><span class="s0">)</span>
+           <span class="s0">pressure1=force_on_tmc(a,b)/area(c)</span>
+           <span class="s0">force1=pressure1*area(d)</span>
+           <span class="s0">force2=pressure1*area(i)</span>
+           <span class="s0">T_B_force=braking_force(pressure1,area(d),e,f)+braking_force(pressure1,area(i),e,f)</span>
+           <span class="s0">dec=deceleration(T_B_force,g)</span>
+           <span class="s0">stop=stoping_distance(h,dec)</span>
+           <span class="s0">print(</span><span class="s1">&quot;pressure generation by TMC/MC&quot;</span><span class="s0">,pressure1,</span><span class="s1">&quot;Pascal&quot;</span><span class="s0">)</span>
+           <span class="s0">print(</span><span class="s1">&quot;front caliper force&quot;</span><span class="s0">,force1,</span><span class="s1">&quot;N&quot;</span><span class="s0">)</span>
+           <span class="s0">print(</span><span class="s1">&quot;rear caliper force&quot;</span><span class="s0">,force2,</span><span class="s1">&quot;N&quot;</span><span class="s0">)</span>
+           <span class="s0">print(</span><span class="s1">&quot;total braking force&quot;</span><span class="s0">,T_B_force,</span><span class="s1">&quot;N&quot;</span><span class="s0">)</span>
+           <span class="s0">print(</span><span class="s1">&quot;deceleration:&quot;</span><span class="s0">,dec,</span><span class="s1">&quot;m/s^2&quot;</span><span class="s0">)</span>
+           <span class="s0">print(</span><span class="s1">&quot;stopping distance: &quot;</span><span class="s0">,stop,</span><span class="s1">&quot;meter&quot;</span><span class="s0">)</span>
+        <span class="s2">elif </span><span class="s0">choice1==</span><span class="s3">3</span><span class="s0">:</span>
+            <span class="s0">print(</span><span class="s1">&quot;force on TMC/MC&quot;</span><span class="s0">, force_on_tmc(a, b), </span><span class="s1">&quot;N&quot;</span><span class="s0">)</span>
+            <span class="s0">print(</span><span class="s1">&quot;area of tmc&quot;</span><span class="s0">, area(c), </span><span class="s1">&quot;meter square&quot;</span><span class="s0">)</span>
+            <span class="s0">pressure1 = force_on_tmc(a, b) / area(c)</span>
+            <span class="s0">force1 = pressure1 * area(d)</span>
+            <span class="s0">force2 = pressure1 * area(i)</span>
+            <span class="s0">T_B_force =braking_force1(pressure1,area(i),j,f)+braking_force1(pressure1,area(i),j,f)</span>
+            <span class="s0">dec = deceleration(T_B_force, g)</span>
+            <span class="s0">stop = stoping_distance(h, dec)</span>
+            <span class="s0">print(</span><span class="s1">&quot;pressure generation by TMC/MC&quot;</span><span class="s0">,pressure1, </span><span class="s1">&quot;Pascal&quot;</span><span class="s0">)</span>
+            <span class="s0">print(</span><span class="s1">&quot;front caliper force&quot;</span><span class="s0">, force1, </span><span class="s1">&quot;N&quot;</span><span class="s0">)</span>
+            <span class="s0">print(</span><span class="s1">&quot;rear caliper force&quot;</span><span class="s0">, force2, </span><span class="s1">&quot;N&quot;</span><span class="s0">)</span>
+            <span class="s0">print(</span><span class="s1">&quot;total braking force&quot;</span><span class="s0">, T_B_force, </span><span class="s1">&quot;N&quot;</span><span class="s0">)</span>
+            <span class="s0">print(</span><span class="s1">&quot;deceleration:&quot;</span><span class="s0">, dec, </span><span class="s1">&quot;m/s^2&quot;</span><span class="s0">)</span>
+            <span class="s0">print(</span><span class="s1">&quot;stopping distance: &quot;</span><span class="s0">,stop,</span><span class="s1">&quot;meter&quot;</span><span class="s0">)</span>
+        <span class="s2">else</span><span class="s0">:</span>
+            <span class="s0">print(</span><span class="s1">&quot;INVALID CHOICE&quot;</span><span class="s0">)</span>
+  <span class="s2">elif </span><span class="s0">choice==</span><span class="s3">2</span><span class="s0">:</span>
+      <span class="s0">print(</span><span class="s1">&quot;enter_numenator_of_braking_weight_distribution_front_to_rear(like 63 for 63/37)&quot;</span><span class="s0">)</span>
+      <span class="s0">k = eval(input())</span>
+      <span class="s0">print(</span><span class="s1">&quot;enter_denominator_of_braking_weight_distribution_front_to_rear(like 37 for 63/37)&quot;</span><span class="s0">)</span>
+      <span class="s0">n = eval(input())</span>
+      <span class="s0">print(</span><span class="s1">&quot;enter_brake_rotor_materials_specific_heat(in j/kgs)&quot;</span><span class="s0">)</span>
+      <span class="s0">l = eval(input())</span>
+      <span class="s0">print(</span><span class="s1">&quot;enter_mass_of_front_rotor(in kg)&quot;</span><span class="s0">)</span>
+      <span class="s0">m = eval(input())</span>
+      <span class="s0">rubbing_area=-</span><span class="s3">1</span><span class="s0">*(area(</span><span class="s3">2</span><span class="s0">*e)-area(((</span><span class="s3">2</span><span class="s0">*e)-</span><span class="s3">60</span><span class="s0">)))</span>
+      <span class="s0">rubbing_area1=-</span><span class="s3">1</span><span class="s0">*(area(</span><span class="s3">2</span><span class="s0">*j)-area(((</span><span class="s3">2</span><span class="s0">*j)-</span><span class="s3">60</span><span class="s0">)))</span>
+      <span class="s0">KE=</span><span class="s3">0.5</span><span class="s0">*g*h*h</span>
+      <span class="s0">f_T_heat_gen=k*KE*</span><span class="s3">0.01</span>
+      <span class="s0">r_T_heat_gen=n*KE*</span><span class="s3">0.01</span>
+      <span class="s0">f_one_rotor_h_gen=f_T_heat_gen*</span><span class="s3">0.5</span>
+      <span class="s0">r_one_rotor_h_gen = r_T_heat_gen * </span><span class="s3">0.5</span>
+      <span class="s0">f_rotor_final_t=(f_one_rotor_h_gen)/(m*l)+</span><span class="s3">32</span>
+      <span class="s0">r_rotor_final_t = (r_one_rotor_h_gen)/(m*l)+</span><span class="s3">32</span>
+      <span class="s0">print(</span><span class="s1">&quot;rubbing area of front rotor:&quot;</span><span class="s0">,rubbing_area,</span><span class="s1">&quot;meter square&quot;</span><span class="s0">)</span>
+      <span class="s0">print(</span><span class="s1">&quot;rubbing area of rear rotor:&quot;</span><span class="s0">,rubbing_area1,</span><span class="s1">&quot;meter square&quot;</span><span class="s0">)</span>
+      <span class="s0">print(</span><span class="s1">&quot;kinetic energy&quot;</span><span class="s0">,KE,</span><span class="s1">&quot;joule&quot;</span><span class="s0">)</span>
+      <span class="s0">print(</span><span class="s1">&quot;front one rotor heat generation&quot;</span><span class="s0">,f_one_rotor_h_gen,</span><span class="s1">&quot;joule&quot;</span><span class="s0">)</span>
+      <span class="s0">print(</span><span class="s1">&quot;final temperature of front rotor &quot;</span><span class="s0">,f_rotor_final_t,</span><span class="s1">&quot;degree C&quot;</span><span class="s0">)</span>
+      <span class="s0">print(</span><span class="s1">&quot;rear one rotor heat generation&quot;</span><span class="s0">, r_one_rotor_h_gen, </span><span class="s1">&quot;joule&quot;</span><span class="s0">)</span>
+      <span class="s0">print(</span><span class="s1">&quot;final temperature of rear rotor &quot;</span><span class="s0">, r_rotor_final_t, </span><span class="s1">&quot;degree C&quot;</span><span class="s0">)</span>
+  <span class="s2">elif </span><span class="s0">choice==</span><span class="s3">3</span><span class="s0">:</span>
+      <span class="s2">break</span>
+  <span class="s2">else</span><span class="s0">:</span>
+      <span class="s0">print(</span><span class="s1">&quot;INVALID CHOICE&quot;</span><span class="s0">)</span>
+
+
+
+
+
+
+
+
+</pre>
+</body>
+</html>
